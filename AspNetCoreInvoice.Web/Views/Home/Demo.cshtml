@@ -1,0 +1,137 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .grey-header {
+            color: #888;
+            font-weight: bold;
+        }
+        .bigger-bolder {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .double-border {
+            border-top: 6px double #555;
+        }
+        .left-border {
+            padding-left: 10px;
+            border-left: 1px solid #ddd;
+        }
+        .address {
+            line-height: .9;
+        }
+    </style>
+</head>
+<body>
+
+<div style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-xs-9">
+            <h1>INVOICE</h1>
+        </div>
+        <div class="col-xs-3">
+            <div class="row">
+                <div class="col-xs-4" style="margin-right: -20px;">
+                    <div class="text-right">
+                        <div class="grey-header">
+                            From
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="left-border address">
+                        <p>
+                            <strong>Company Name</strong>
+                        </p>
+                        <p>123 Fake Street</p>
+                        <p>Kingston, ON K0G 1J0</p>
+                        <p>Canada</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 50px;">
+        <div class="col-xs-9">
+            <div class="row">
+                <div class="col-xs-2" style="margin-right: -70px;">
+                    <div class="grey-header">
+                        <p>Invoice #</p>
+                        <p>Issue Date</p>
+                        <p>Due Date</p>
+                    </div>
+                </div>
+                <div class="col-xs-10">
+                    <div class="left-border">
+                        <p>005</p>
+                        <p>May 15, 2020</p>
+                        <p>June 15, 2020</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="row">
+                <div class="col-xs-4" style="margin-right: -20px;">
+                    <div class="text-right">
+                        <div class="grey-header">
+                            To
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="left-border address">
+                        <p>
+                            <strong>Customer Name</strong>
+                        </p>
+                        <p>456 Fake Street</p>
+                        <p>Ottawa, ON K0G 1J0</p>
+                        <p>Canada</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 50px;">
+        <div class="col-xs-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Units/Hours</th>
+                    <th>Price Per Unit/Hour</th>
+                    <th>Item Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Web Development</td>
+                    <td>3.5</td>
+                    <td>2</td>
+                    <td>$105</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr class="double-border info">
+                    <td></td>
+                    <td></td>
+                    <td class="text-right bigger-bolder">
+                        Total Due
+                    </td>
+                    <td class="bigger-bolder">
+                        $200
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

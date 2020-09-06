@@ -1,0 +1,32 @@
+﻿@model Invoice
+@{
+    ViewBag.Title = "IOU Invoice Creator";
+}
+
+<div class="pt-4 pb-4">
+    <form id="invoice-form" class="ui form" asp-action="GenerateInvoice">
+
+        <!-- Company Details -->
+        <partial name="Partials/_Company"/>
+
+        <!-- Customer Details -->
+        <partial name="Partials/_Customer"/>
+
+        <!-- Invoice Details -->
+        <partial name="Partials/_Invoice"/>
+
+        <!-- Invoice Items -->
+        <partial name="Partials/_Items"/>
+
+        <!-- Additional Fees -->
+        <partial name="Partials/_Fees"/>
+
+        <div class="ui divider"></div>
+
+        <div class="pb-4">
+            <button id="generate" class="fluid ui button primary">
+                Generate Invoice
+            </button>
+        </div>
+    </form>
+</div>

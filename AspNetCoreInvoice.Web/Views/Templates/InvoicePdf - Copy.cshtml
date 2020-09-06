@@ -1,0 +1,160 @@
+﻿@model AspNetCoreInvoice.Web.Models.Invoice
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <style>
+        body{
+            font-family: 'Karla', sans-serif;
+            font-size: 18px;
+        }
+        .grey {
+            color: #777;
+        }
+        .grey-header {
+            color: #777;
+            font-weight: bold;
+        }
+        .bigger-bolder {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .double-border {
+            border-top: 5px double #555;
+        }
+        .left-border {
+            padding-left: 20px;
+            border-left: 1px solid #ddd;
+        }
+        .line-height {
+            line-height: .9;
+        }
+        .bg-grey {
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<div style="padding-top: 70px;">
+    <div class="row">
+        <div class="col-xs-5">
+            <div class="line-height">
+                <h1>
+                    <strong>@Model.CompanyAddress.Name</strong>
+                </h1>
+                <div class="grey">
+                    <p>@Model.CompanyAddress.Street</p>
+                    <p>@Model.CompanyAddress.MergedAddressLine()</p>
+                    <p>@Model.CompanyAddress.Country</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-2"></div>
+        <div class="col-xs-5">
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-11 bg-grey line-height" style="margin-right: -40px;">
+                    <p>
+                        <strong>@Model.CustomerAddress.Name</strong>
+                    </p>
+                    <p>@Model.CustomerAddress.Street</p>
+                    <p>@Model.CustomerAddress.City, @Model.CustomerAddress.State @Model.CustomerAddress.ZipCode</p>
+                    <p>@Model.CustomerAddress.Country</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row" style="padding-top: 50px;">
+        <div class="col-xs-7">
+            <p style="font-size: 40px;">INVOICE</p>
+        </div>
+        <div class="col-xs-5">
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-5 bg-grey" style="margin-right: -40px;">
+                    <div class="grey-header">
+                        <p>Invoice #</p>
+                        <p>Issue Date</p>
+                        <p>Due Date</p>
+                    </div>
+                </div>
+                <div class="col-xs-6 bg-grey">
+                    <div class="left-border">
+                        <p>@Model.Number</p>
+                        <p>@Model.DateCreated.ToString("MMMM d, yyyy")</p>
+                        <p>@Model.DueDate.ToString("MMMM d, yyyy")</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 100px;">
+        <div class="col-xs-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Units/Hours</th>
+                    <th>Price Per Unit/Hour</th>
+                    <th>Item Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>@item.Description</td>
+                        <td>@item.Units</td>
+                        <td>@item.PricePerUnit.ToString("C")</td>
+                        <td>@item.TotalCost.ToString("C")</td>
+                    </tr>
+                }
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right grey-header line-height">
+                        <p>Subtotal</p>
+                        @foreach (var fee in Model.CalculatedFees())
+                        {
+                            <p>
+                                @fee.Key
+                            </p>
+                        }
+
+                    </td>
+                    <td class="line-height">
+                        <p>@Model.SubTotal.ToString("C")</p>
+                        @foreach (var fee in Model.CalculatedFees())
+                        {
+                            <p>
+                                @fee.Value.ToString("C")
+                            </p>
+                        }
+                    </td>
+                </tr>
+                <tr class="double-border info">
+                    <td colspan="3" class="text-right bigger-bolder">
+                        Balance Due
+                    </td>
+                    <td class="bigger-bolder">
+                        @Model.AmountDue().ToString("C")
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

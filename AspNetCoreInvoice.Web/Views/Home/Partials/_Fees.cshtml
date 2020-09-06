@@ -1,0 +1,52 @@
+﻿@model Invoice
+
+<div style="margin-top: 50px;">
+    <h4 class="ui dividing header">
+        <i class="dollar sign icon"></i>
+        <div class="content">
+            Additional Fees (Taxes, Delivery etc.)
+        </div>
+    </h4>
+    <div id="invoice-fee">
+        <div id="starter-fee">
+            <div class="three fields invoice-fee">
+                <div class="field">
+                    <label>Description</label>
+                    <input type="text" asp-for="@Model.Fees[0].Description" maxlength="500" placeholder="Sales Tax">
+                </div>
+                <div class="field">
+                    <label>Value</label>
+                    <input type="number" asp-for="@Model.Fees[0].Value" pattern="^\d*(\.\d{0,2})?$" step="0.01" placeholder="10">
+                </div>
+                <div class="field">
+                    <div class="grouped fields">
+                        <label>Price or Percentage</label>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="Fees[0].PercentageOrPrice" checked="" tabindex="0" class="hidden" value="Price">
+                                <label>Price</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="Fees[0].PercentageOrPrice" tabindex="0" class="hidden" value="Percentage">
+                                <label>Percentage</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-2">
+    <div class="fluid ui button" onclick="addRow('fee')">
+        <i class="plus icon"></i> Add Fee
+    </div>
+</div>
+<div id="remove-fee" class="mt-2" style="display: none;">
+    <div class="fluid ui button red" onclick="removeRow('fee')">
+        <i class="minus icon"></i> Remove Last Fee
+    </div>
+</div>

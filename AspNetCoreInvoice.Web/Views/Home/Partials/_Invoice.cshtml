@@ -1,0 +1,24 @@
+﻿@model Invoice
+
+<div style="margin-top: 50px;">
+    <h4 class="ui dividing header">
+        <i class="file alternate icon"></i>
+        <div class="content">
+            Invoice Details
+        </div>
+    </h4>
+    <div class="three fields">
+        <div class="field">
+            <label>Invoice #</label>
+            <input type="text" asp-for="@Model.Number" maxlength="255" placeholder="001">
+        </div>
+        <div class="field">
+            <label>Issue Date</label>
+            <input type="text" asp-for="@Model.DateCreated" class="datepicker" maxlength="255" placeholder="May 15, 2020">
+        </div>
+        <div class="field">
+            <label>Due Date</label>
+            <input type="text" asp-for="@Model.DueDate" class="datepicker" maxlength="255" placeholder="June 15, 2020">
+        </div>
+    </div>
+</div>

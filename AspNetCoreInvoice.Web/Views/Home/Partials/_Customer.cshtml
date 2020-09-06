@@ -1,0 +1,47 @@
+﻿@model Invoice
+
+<div style="margin-top: 50px;">
+    <h4 class="ui dividing header">
+        <i class="user icon"></i>
+        <div class="content">
+            Customer
+        </div>
+    </h4>
+    <div class="four fields">
+        <div class="field">
+            <label>Name<span class="required">*</span></label>
+            <input type="text" asp-for="@Model.CustomerAddress.Name" maxlength="255" placeholder="John Smith" required>
+        </div>
+        <div class="field">
+            <label>Street</label>
+            <input type="text" asp-for="@Model.CustomerAddress.Street" maxlength="255" placeholder="123 Fake St">
+        </div>
+        <div class="field">
+            <label>Unit/Apt</label>
+            <input type="text" asp-for="@Model.CustomerAddress.Unit" maxlength="255" placeholder="400">
+        </div>
+        <div class="field">
+            <label>City<span class="required">*</span></label>
+            <input type="text" asp-for="@Model.CustomerAddress.City" maxlength="255" placeholder="San Diego" required>
+        </div>
+
+    </div>
+    <div class="four fields">
+        <div class="field">
+            <label>State/Province</label>
+            <input type="text" asp-for="@Model.CustomerAddress.State" maxlength="255" placeholder="CA">
+        </div>
+        <div class="field">
+            <label>Country<span class="required">*</span></label>
+            <input type="text" asp-for="@Model.CustomerAddress.Country" maxlength="255" placeholder="United States" required>
+        </div>
+        <div class="field">
+            <label>Zipcode</label>
+            <input type="text" asp-for="@Model.CustomerAddress.ZipCode" maxlength="255" placeholder="90210">
+        </div>
+        <div class="field">
+            <label>Phone Number</label>
+            <input type="text" asp-for="@Model.CustomerAddress.PhoneNumber" maxlength="255" placeholder="(555) 555-5555">
+        </div>
+    </div>
+</div>
