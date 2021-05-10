@@ -1,4 +1,4 @@
-# Invoice Generator (ASP.NET Core)
+# Invoice Generator (ASP.NET Core + Razor)
 
 ### Purpose
 
